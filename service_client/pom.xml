@@ -13,6 +13,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>service_cmn_client</module>
+        <module>service_hosp_client</module>
+        <module>service_order_client</module>
+        <module>service_user_client</module>
     </modules>
 
     <properties>
