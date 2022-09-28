@@ -6,9 +6,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
-        <module>common/common_util</module>
-        <module>common/rabbit_util</module>
-        <module>common/service_util</module>
         <module>hospital-manage</module>
         <module>Model</module>
         <module>service</module>
