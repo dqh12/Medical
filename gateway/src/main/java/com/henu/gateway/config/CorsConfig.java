@@ -8,6 +8,7 @@ import org.springframework.web.util.pattern.PathPatternParser;
 
 public class CorsConfig {
     @Bean
+    //跨域配置
     public CorsWebFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedMethod("*");
