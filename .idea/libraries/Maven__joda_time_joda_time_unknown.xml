@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: joda-time:joda-time:unknown">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/joda-time/joda-time/unknown/joda-time-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/joda-time/joda-time/unknown/joda-time-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/joda-time/joda-time/unknown/joda-time-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

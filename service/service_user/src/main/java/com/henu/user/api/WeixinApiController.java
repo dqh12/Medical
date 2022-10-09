@@ -7,7 +7,7 @@ import com.henu.model.models.user.UserInfo;
 import com.henu.user.service.UserInfoService;
 import com.henu.user.utils.ConstantWxPropertiesUtils;
 import com.henu.user.utils.HttpClientUtils;
-import com.sun.deploy.net.URLEncoder;
+import java.net.URLEncoder;//com.sun.deploy.net.URLEncoder
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;

@@ -27,7 +27,7 @@ public class SumException extends RuntimeException{
 
     @Override
     public String toString() {
-        return "YyghException{" +
+        return "SumException{" +
                 "code=" + code +
                 ", message=" + this.getMessage() +
                 '}';

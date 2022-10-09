@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -11,6 +12,7 @@
         <module name="rabbit_util" />
         <module name="service_msm" />
         <module name="service_order" />
+        <module name="service-util" />
         <module name="service_cmn" />
         <module name="common_util" />
         <module name="service_oss" />
@@ -35,6 +37,7 @@
       <module name="Model" target="8" />
       <module name="rabbit_util" target="8" />
       <module name="service" target="8" />
+      <module name="service-util" target="8" />
       <module name="service_client" target="8" />
       <module name="service_cmn" target="8" />
       <module name="service_cmn_client" target="8" />
@@ -48,7 +51,7 @@
       <module name="service_task" target="8" />
       <module name="service_user" target="8" />
       <module name="service_user_client" target="8" />
-      <module name="service_util" target="8" />
+      <module name="service_util" target="1.6" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -59,6 +62,7 @@
       <module name="gateway" options="-parameters" />
       <module name="hospital-manage" options="-parameters" />
       <module name="rabbit_util" options="-parameters" />
+      <module name="service-util" options="-parameters" />
       <module name="service_cmn" options="-parameters" />
       <module name="service_cmn_client" options="-parameters" />
       <module name="service_hosp" options="-parameters" />
