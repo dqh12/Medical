@@ -1,7 +1,11 @@
 package com.henu.hospital.controller;
+
 import com.henu.hospital.service.ApiService;
 import com.henu.hospital.service.HospitalService;
-import com.henu.hospital.util.*;
+import com.henu.hospital.util.HttpRequestHelper;
+import com.henu.hospital.util.MedicalException;
+import com.henu.hospital.util.Result;
+import com.henu.hospital.util.ResultCodeEnum;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

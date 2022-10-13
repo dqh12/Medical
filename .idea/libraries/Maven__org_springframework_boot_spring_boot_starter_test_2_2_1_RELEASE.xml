@@ -1,13 +1,13 @@
 <component name="libraryTable">
-  <library name="Maven: org.springframework.boot:spring-boot-starter-test:2.2.1.RELEASE">
+  <library name="Maven: com.aliyun:aliyun-java-sdk-kms:2.7.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/org/springframework/boot/spring-boot-starter-test/2.2.1.RELEASE/spring-boot-starter-test-2.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/aliyun/aliyun-java-sdk-kms/2.7.0/aliyun-java-sdk-kms-2.7.0.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/org/springframework/boot/spring-boot-starter-test/2.2.1.RELEASE/spring-boot-starter-test-2.2.1.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/aliyun/aliyun-java-sdk-kms/2.7.0/aliyun-java-sdk-kms-2.7.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/org/springframework/boot/spring-boot-starter-test/2.2.1.RELEASE/spring-boot-starter-test-2.2.1.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/aliyun/aliyun-java-sdk-kms/2.7.0/aliyun-java-sdk-kms-2.7.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

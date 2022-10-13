@@ -1,13 +1,13 @@
 <component name="libraryTable">
-  <library name="Maven: org.springframework:spring-webmvc:5.2.1.RELEASE">
+  <library name="Maven: io.github.openfeign:feign-core:10.4.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/org/springframework/spring-webmvc/5.2.1.RELEASE/spring-webmvc-5.2.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/io/github/openfeign/feign-core/10.4.0/feign-core-10.4.0.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/org/springframework/spring-webmvc/5.2.1.RELEASE/spring-webmvc-5.2.1.RELEASE-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/io/github/openfeign/feign-core/10.4.0/feign-core-10.4.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/org/springframework/spring-webmvc/5.2.1.RELEASE/spring-webmvc-5.2.1.RELEASE-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/io/github/openfeign/feign-core/10.4.0/feign-core-10.4.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
