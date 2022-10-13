@@ -10,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/hospital-manage/hospital-manage.iml" filepath="$PROJECT_DIR$/hospital-manage/hospital-manage.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/rabbit_util/rabbit_util.iml" filepath="$PROJECT_DIR$/common/rabbit_util/rabbit_util.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common/service_util/service-util.iml" filepath="$PROJECT_DIR$/common/service_util/service-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/service_client/service_client.iml" filepath="$PROJECT_DIR$/service_client/service_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service_cmn/service_cmn.iml" filepath="$PROJECT_DIR$/service/service_cmn/service_cmn.iml" />
       <module fileurl="file://$PROJECT_DIR$/service_client/service_cmn_client/service_cmn_client.iml" filepath="$PROJECT_DIR$/service_client/service_cmn_client/service_cmn_client.iml" />

@@ -12,7 +12,6 @@
         <module name="rabbit_util" />
         <module name="service_msm" />
         <module name="service_order" />
-        <module name="service-util" />
         <module name="service_cmn" />
         <module name="common_util" />
         <module name="service_oss" />
@@ -51,7 +50,7 @@
       <module name="service_task" target="8" />
       <module name="service_user" target="8" />
       <module name="service_user_client" target="8" />
-      <module name="service_util" target="1.6" />
+      <module name="service_util" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

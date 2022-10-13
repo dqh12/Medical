@@ -19,13 +19,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
-/**
- * Redis配置类
- *
- * @EnableCaching 注释触发后置处理器, 检查每一个Spring bean 的 public 方法是否存在缓存注解。
- * 如果找到这样的一个注释, 自动创建一个代理拦截方法调用和处理相应的缓存行为。
- *
- */
+
 @Configuration
 @EnableCaching
 public class RedisConfig {
@@ -39,11 +33,8 @@ public class RedisConfig {
             @Override
             public Object generate(Object target, Method method, Object... params) {
                 StringBuilder sb = new StringBuilder();
-                //类地址
                 sb.append(target.getClass().getName());
-                //方法名
                 sb.append(method.getName());
-                //参数列表
                 for (Object obj : params) {
                     sb.append(obj.toString());
                 }
@@ -51,7 +42,6 @@ public class RedisConfig {
             }
         };
     }
-
     /**
      * 设置RedisTemplate规则
      * @param redisConnectionFactory
@@ -70,6 +60,7 @@ public class RedisConfig {
         // 指定序列化输入的类型，类必须是非final修饰的，final修饰的类，比如String,Integer等会跑出异常
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
+
         //序列号key value
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
@@ -96,7 +87,7 @@ public class RedisConfig {
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
 
-        // 配置序列化（解决乱码的问题）,过期时间600秒
+       // 配置序列化（解决乱码的问题）,过期时间600秒
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(600))
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
@@ -108,5 +99,4 @@ public class RedisConfig {
                 .build();
         return cacheManager;
     }
-
 }

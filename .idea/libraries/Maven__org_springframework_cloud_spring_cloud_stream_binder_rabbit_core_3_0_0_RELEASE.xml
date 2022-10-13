@@ -1,13 +1,13 @@
 <component name="libraryTable">
-  <library name="Maven: com.baomidou:mybatis-plus-boot-starter:3.0.5">
+  <library name="Maven: com.aliyun.oss:aliyun-sdk-oss:3.9.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/baomidou/mybatis-plus-boot-starter/3.0.5/mybatis-plus-boot-starter-3.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/aliyun/oss/aliyun-sdk-oss/3.9.1/aliyun-sdk-oss-3.9.1.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/baomidou/mybatis-plus-boot-starter/3.0.5/mybatis-plus-boot-starter-3.0.5-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/aliyun/oss/aliyun-sdk-oss/3.9.1/aliyun-sdk-oss-3.9.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/baomidou/mybatis-plus-boot-starter/3.0.5/mybatis-plus-boot-starter-3.0.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Maven/apache-maven-3.8.2/maven_repository/com/aliyun/oss/aliyun-sdk-oss/3.9.1/aliyun-sdk-oss-3.9.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
