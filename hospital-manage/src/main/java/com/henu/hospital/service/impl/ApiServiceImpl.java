@@ -49,6 +49,7 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public String getHoscode() {
         HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
+        System.out.println(hospitalSet);
         return hospitalSet.getHoscode();
     }
 

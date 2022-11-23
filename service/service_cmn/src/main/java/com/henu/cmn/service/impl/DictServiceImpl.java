@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,25 +44,25 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     @Override
     public void exportDictData(HttpServletResponse response) {
         //设置下载信息
-        response.setContentType("application/vnd.ms-excel");
-        response.setCharacterEncoding("utf-8");
-        String fileName = "dict";
-        response.setHeader("Content-disposition", "attachment;filename="+ fileName + ".xlsx");
-        //查询数据库
-        List<Dict> dictList = baseMapper.selectList(null);
-        //Dict -- DictEeVo
-        List<DictEeVo> dictVoList = new ArrayList<>();
-        for(Dict dict:dictList) {
-            DictEeVo dictEeVo = new DictEeVo();
-           // dictEeVo.setId(dict.getId());
-            BeanUtils.copyProperties(dict,dictEeVo);
-            dictVoList.add(dictEeVo);
-        }
-        //调用方法进行写操作
         try {
+            response.setContentType("application/vnd.ms-excel");
+            response.setCharacterEncoding("utf-8");
+            String fileName = URLEncoder.encode("dict", "UTF-8");
+            response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+            //查询数据库
+            List<Dict> dictList = baseMapper.selectList(null);
+            //Dict -- DictEeVo
+            List<DictEeVo> dictVoList = new ArrayList<>();
+            for (Dict dict : dictList) {
+                DictEeVo dictEeVo = new DictEeVo();
+                // dictEeVo.setId(dict.getId());
+                BeanUtils.copyProperties(dict, dictEeVo);
+                dictVoList.add(dictEeVo);
+            }
+            //调用方法进行写操作
             EasyExcel.write(response.getOutputStream(), DictEeVo.class).sheet("dict")
                     .doWrite(dictVoList);
-        } catch (IOException e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -86,14 +88,17 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
             wrapper.eq("value",value);
             Dict dict = baseMapper.selectOne(wrapper);
             return dict.getName();
-        } else {//如果dictCode不为空，根据dictCode和value查询
+        } else {
+            //如果dictCode不为空，根据dictCode和value查询
             //根据dictcode查询dict对象，得到dict的id值
             Dict codeDict = this.getDictByDictCode(dictCode);
             Long parent_id = codeDict.getId();
             //根据parent_id和value进行查询
-            Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>()
-                    .eq("parent_id", parent_id)
-                    .eq("value", value));
+            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+            wrapper = wrapper.eq("parent_id", parent_id);
+            wrapper = wrapper.eq("value",value);
+            System.out.println(parent_id+"  "+value);
+            Dict finalDict = baseMapper.selectOne(wrapper);
             return finalDict.getName();
         }
     }

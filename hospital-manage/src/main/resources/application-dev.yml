@@ -13,6 +13,13 @@ spring:
     cache: false
     #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/static/
   redis:
     host: 127.0.0.1
     port: 6379
@@ -27,7 +34,7 @@ spring:
         min-idle: 0     #最小空闲
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/medical_manage?characterEncoding=utf-8&useSSL=false
     username: root
     password: root
