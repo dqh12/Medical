@@ -21,7 +21,7 @@ public class HttpRequestHelper {
     }
 
     /**
-     *
+     *将 String[] 转为 Object
      * @param paramMap
      * @return
      */

@@ -22,7 +22,7 @@ public class PatientApiController {
     @GetMapping("auth/findAll")
     public Result findAll(HttpServletRequest request) {
         //获取当前登录用户id
-        Long userId = AuthContextHolder.getUserId(request);
+        Long userId = AuthContextHolder.getUserId(request);//从request的header获取token，根据token获得用户id
         List<Patient> list = patientService.findAllUserId(userId);
         return Result.ok(list);
     }
@@ -31,7 +31,7 @@ public class PatientApiController {
     @PostMapping("auth/save")
     public Result savePatient(@RequestBody Patient patient, HttpServletRequest request) {
         //获取当前登录用户id
-        Long userId = AuthContextHolder.getUserId(request);
+        Long userId = AuthContextHolder.getUserId(request);//从request的header获取token，根据token获得用户id
         patient.setUserId(userId);
         patientService.save(patient);
         return Result.ok();

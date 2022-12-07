@@ -10,6 +10,7 @@ import com.henu.model.models.cmn.Dict;
 import com.henu.model.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,16 +27,17 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
 
     //根据数据id查询子数据列表
     @Override
-    //@Cacheable(value = "dict",keyGenerator = "keyGenerator")
+    @Cacheable(value = "dict",keyGenerator = "keyGenerator")
     public List<Dict> findChlidData(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("parent_id",id);
         List<Dict> dictList = baseMapper.selectList(wrapper);
+
         //向list集合每个dict对象中设置hasChildren
         for (Dict dict:dictList) {
             Long dictId = dict.getId();
-            boolean isChild = this.isChildren(dictId);
-            dict.setHasChildren(isChild);
+            boolean isChild = this.isChildren(dictId);//判断id下面是否有子节点
+            dict.setHasChildren(isChild);//设置是否包含子节点
         }
         return dictList;
     }
@@ -55,11 +57,11 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
             List<DictEeVo> dictVoList = new ArrayList<>();
             for (Dict dict : dictList) {
                 DictEeVo dictEeVo = new DictEeVo();
-                // dictEeVo.setId(dict.getId());
+                //将dict的值复制到dictEeVo中
                 BeanUtils.copyProperties(dict, dictEeVo);
                 dictVoList.add(dictEeVo);
             }
-            //调用方法进行写操作
+            //调用方法进行写操作，按照DictEeVo的类型进行写
             EasyExcel.write(response.getOutputStream(), DictEeVo.class).sheet("dict")
                     .doWrite(dictVoList);
         }catch (Exception e){
@@ -69,9 +71,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
 
     //导入数据字典
     @Override
-    @CacheEvict(value = "dict", allEntries=true)
+    @CacheEvict(value = "dict", allEntries=true)//清除缓存
     public void importDictData(MultipartFile file) {
-        try {
+        try {//按照DictEeVo的类型进行读
             EasyExcel.read(file.getInputStream(),DictEeVo.class,new DictListener(baseMapper)).sheet().doRead();
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,7 +99,6 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
             QueryWrapper<Dict> wrapper = new QueryWrapper<>();
             wrapper = wrapper.eq("parent_id", parent_id);
             wrapper = wrapper.eq("value",value);
-            System.out.println(parent_id+"  "+value);
             Dict finalDict = baseMapper.selectOne(wrapper);
             return finalDict.getName();
         }
@@ -113,6 +114,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         return chlidData;
     }
 
+    //根据dict_code查询Dict
     private Dict getDictByDictCode(String dictCode) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("dict_code",dictCode);

@@ -50,8 +50,6 @@ public class ApiController {
         String hoscode = (String)paramMap.get("hoscode");
         String hosScheduleId = (String)paramMap.get("hosScheduleId");
 
-        //TODO 签名校验
-
         scheduleService.remove(hoscode,hosScheduleId);
         return Result.ok();
     }

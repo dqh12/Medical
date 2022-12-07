@@ -29,7 +29,7 @@ public class UserInfoApiController {
     //用户认证接口
     @PostMapping("auth/userAuth")
     public Result userAuth(@RequestBody UserAuthVo userAuthVo, HttpServletRequest request) {
-        //传递两个参数，第一个参数用户id，第二个参数认证数据vo对象
+        //传递两个参数，第一个参数用户id，第二个参数认证数据vo对象，UserAuthVo包含了身份证信息
         userInfoService.userAuth(AuthContextHolder.getUserId(request),userAuthVo);
         return Result.ok();
     }
@@ -37,7 +37,7 @@ public class UserInfoApiController {
     //获取用户id信息接口
     @GetMapping("auth/getUserInfo")
     public Result getUserInfo(HttpServletRequest request) {
-        Long userId = AuthContextHolder.getUserId(request);
+        Long userId = AuthContextHolder.getUserId(request);//从request的header获取token，根据token获得用户id
         UserInfo userInfo = userInfoService.getById(userId);
         return Result.ok(userInfo);
     }
