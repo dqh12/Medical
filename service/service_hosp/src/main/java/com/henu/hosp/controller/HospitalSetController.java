@@ -58,9 +58,10 @@ public class HospitalSetController {
         //创建page对象，传递当前页，每页记录数
         Page<HospitalSet> page = new Page<>(current,limit);
         //构建条件
-        QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();
+        QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();//存放查询条件
         String hosname = hospitalSetQueryVo.getHosname();//医院名称
         String hoscode = hospitalSetQueryVo.getHoscode();//医院编号
+
         if(!StringUtils.isEmpty(hosname)) {
             wrapper.like("hosname",hospitalSetQueryVo.getHosname());
         }
@@ -143,7 +144,7 @@ public class HospitalSetController {
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         String signKey = hospitalSet.getSignKey();
         String hoscode = hospitalSet.getHoscode();
-        //TODO 发送短信
+
         return Result.ok();
     }
 }

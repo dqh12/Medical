@@ -45,7 +45,7 @@ public class ApiController {
     public Result remove(HttpServletRequest request) {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
-        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);//将String数组转换为object类型
         //获取医院编号和排班编号
         String hoscode = (String)paramMap.get("hoscode");
         String hosScheduleId = (String)paramMap.get("hosScheduleId");
@@ -59,7 +59,7 @@ public class ApiController {
     public Result findSchedule(HttpServletRequest request) {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
-        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);//将String数组转换为object类型
 
         //医院编号
         String hoscode = (String)paramMap.get("hoscode");
@@ -69,7 +69,6 @@ public class ApiController {
         //当前页 和 每页记录数
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
-        //TODO 签名校验
 
         ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
         scheduleQueryVo.setHoscode(hoscode);
@@ -85,8 +84,9 @@ public class ApiController {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //将String数组转换为object类型
 
-        //TODO 签名校验
+
         scheduleService.save(paramMap);
         return Result.ok();
     }
@@ -97,10 +97,12 @@ public class ApiController {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //将String数组转换为object类型
+
         //医院编号 和 科室编号
         String hoscode = (String)paramMap.get("hoscode");
         String depcode = (String)paramMap.get("depcode");
-        //TODO 签名校验
+
         departmentService.remove(hoscode,depcode);
         return Result.ok();
     }
@@ -111,13 +113,13 @@ public class ApiController {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //将String数组转换为object类型
 
         //医院编号
         String hoscode = (String)paramMap.get("hoscode");
         //当前页 和 每页记录数
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
-        //TODO 签名校验
 
         DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
         departmentQueryVo.setHoscode(hoscode);
@@ -132,6 +134,7 @@ public class ApiController {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //将String数组转换为object类型
 
         //获取医院编号
         String hoscode = (String)paramMap.get("hoscode");
@@ -160,6 +163,8 @@ public class ApiController {
         //获取传递过来医院信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //将String数组转换为object类型
+
         //获取医院编号
         String hoscode = (String)paramMap.get("hoscode");
         //1 获取医院系统传递过来的签名,签名进行MD5加密
@@ -187,6 +192,7 @@ public class ApiController {
         //获取传递过来医院信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //将String数组转换为object类型
 
         //1 获取医院系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)paramMap.get("sign");
