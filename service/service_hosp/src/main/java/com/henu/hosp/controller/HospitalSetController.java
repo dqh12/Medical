@@ -96,13 +96,6 @@ public class HospitalSetController {
     //5 根据id获取医院设置
     @GetMapping("getHospSet/{id}")
     public Result getHospSet(@PathVariable Long id) {
-//        try {
-//            //模拟异常
-//            int a = 1/0;
-//        }catch (Exception e) {
-//            throw new YyghException("失败",201);
-//        }
-
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         return Result.ok(hospitalSet);
     }
@@ -144,7 +137,6 @@ public class HospitalSetController {
         HospitalSet hospitalSet = hospitalSetService.getById(id);
         String signKey = hospitalSet.getSignKey();
         String hoscode = hospitalSet.getHoscode();
-
         return Result.ok();
     }
 }

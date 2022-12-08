@@ -33,12 +33,16 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         wrapper.eq("parent_id",id);
         List<Dict> dictList = baseMapper.selectList(wrapper);
 
+        System.out.println(dictList);
         //向list集合每个dict对象中设置hasChildren
         for (Dict dict:dictList) {
             Long dictId = dict.getId();
             boolean isChild = this.isChildren(dictId);//判断id下面是否有子节点
             dict.setHasChildren(isChild);//设置是否包含子节点
         }
+
+        System.out.println("*****************");
+        System.out.println(dictList);
         return dictList;
     }
 
@@ -83,25 +87,20 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     //根据dictcode和value查询
     @Override
     public String getDictName(String dictCode, String value) {
-        //如果dictCode为空，直接根据value查询
         if(StringUtils.isEmpty(dictCode)) {
-            //直接根据value查询
-            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-            wrapper.eq("value",value);
-            Dict dict = baseMapper.selectOne(wrapper);
-            return dict.getName();
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("value", value));
+            if(null != dict) {
+                return dict.getName();
+            }
         } else {
-            //如果dictCode不为空，根据dictCode和value查询
-            //根据dictcode查询dict对象，得到dict的id值
-            Dict codeDict = this.getDictByDictCode(dictCode);
-            Long parent_id = codeDict.getId();
-            //根据parent_id和value进行查询
-            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-            wrapper = wrapper.eq("parent_id", parent_id);
-            wrapper = wrapper.eq("value",value);
-            Dict finalDict = baseMapper.selectOne(wrapper);
-            return finalDict.getName();
+            Dict parentDict = this.getDictByDictCode(dictCode);
+            if(null == parentDict) return "";
+            Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("parent_id", parentDict.getId()).eq("value", value));
+            if(null != dict) {
+                return dict.getName();
+            }
         }
+        return "";
     }
 
     //根据dictCode获取下级节点
