@@ -2,6 +2,7 @@ package com.henu.cmn.controller;
 import com.henu.cmn.service.DictService;
 import com.henu.common.util.Result;
 import com.henu.model.models.cmn.Dict;
+import io.lettuce.core.ScriptOutputType;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import java.util.List;
 @Api(description = "数据字典接口")
 @RestController
 @RequestMapping("/admin/cmn/dict")
-//@CrossOrigin
 public class DictController {
 
     @Autowired
@@ -45,7 +45,10 @@ public class DictController {
     @ApiOperation(value = "根据数据id查询子数据列表")
     @GetMapping("findChildData/{id}")
     public Result findChildData(@PathVariable Long id) {
+        System.out.println(id);
         List<Dict> list = dictService.findChlidData(id);
+        System.out.println(list);
+        System.out.println("成功");
         return Result.ok(list);
     }
 

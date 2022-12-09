@@ -40,8 +40,8 @@ public class HospApiController {
 
     @ApiOperation(value = "查询医院列表")
     @GetMapping("findHospList/{page}/{limit}")
-    public Result findHospList(@PathVariable Integer page,
-                               @PathVariable Integer limit,
+    public Result findHospList(@PathVariable("page") Integer page,
+                               @PathVariable("limit") Integer limit,
                                HospitalQueryVo hospitalQueryVo) {
         Page<Hospital> hospitals = hospitalService.selectHospPage(page, limit, hospitalQueryVo);
         return Result.ok(hospitals);
@@ -49,21 +49,21 @@ public class HospApiController {
 
     @ApiOperation(value = "根据医院名称查询")
     @GetMapping("findByHosName/{hosname}")
-    public Result findByHosName(@PathVariable String hosname) {
+    public Result findByHosName(@PathVariable("hosname") String hosname) {
         List<Hospital> list = hospitalService.findByHosname(hosname);
         return Result.ok(list);
     }
 
     @ApiOperation(value = "根据医院编号获取科室")
     @GetMapping("department/{hoscode}")
-    public Result index(@PathVariable String hoscode) {
+    public Result index(@PathVariable("hoscode") String hoscode) {
         List<DepartmentVo> list = departmentService.findDeptTree(hoscode);
         return Result.ok(list);
     }
 
     @ApiOperation(value = "根据医院编号获取医院预约挂号详情")
     @GetMapping("findHospDetail/{hoscode}")
-    public Result item(@PathVariable String hoscode) {
+    public Result item(@PathVariable("hoscode") String hoscode) {
         Map<String, Object> map = hospitalService.item(hoscode);
         return Result.ok(map);
     }
@@ -72,13 +72,13 @@ public class HospApiController {
     @GetMapping("auth/getBookingScheduleRule/{page}/{limit}/{hoscode}/{depcode}")
     public Result getBookingSchedule(
             @ApiParam(name = "page", value = "当前页码", required = true)
-            @PathVariable Integer page,
+            @PathVariable("page") Integer page,
             @ApiParam(name = "limit", value = "每页记录数", required = true)
-            @PathVariable Integer limit,
+            @PathVariable("limit") Integer limit,
             @ApiParam(name = "hoscode", value = "医院code", required = true)
-            @PathVariable String hoscode,
+            @PathVariable("hoscode") String hoscode,
             @ApiParam(name = "depcode", value = "科室code", required = true)
-            @PathVariable String depcode) {
+            @PathVariable("depcode") String depcode) {
         return Result.ok(scheduleService.getBookingScheduleRule(page, limit, hoscode, depcode));
     }
 
@@ -86,17 +86,17 @@ public class HospApiController {
     @GetMapping("auth/findScheduleList/{hoscode}/{depcode}/{workDate}")
     public Result findScheduleList(
             @ApiParam(name = "hoscode", value = "医院code", required = true)
-            @PathVariable String hoscode,
+            @PathVariable("hoscode") String hoscode,
             @ApiParam(name = "depcode", value = "科室code", required = true)
-            @PathVariable String depcode,
+            @PathVariable("depcode") String depcode,
             @ApiParam(name = "workDate", value = "排班日期", required = true)
-            @PathVariable String workDate) {
+            @PathVariable("workDate") String workDate) {
         return Result.ok(scheduleService.getDetailSchedule(hoscode, depcode, workDate));
     }
 
     @ApiOperation(value = "获取排班id获取排班数据")
     @GetMapping("getSchedule/{scheduleId}")
-    public Result getSchedule(@PathVariable String scheduleId) {
+    public Result getSchedule(@PathVariable("scheduleId") String scheduleId) {
         Schedule schedule = scheduleService.getScheduleId(scheduleId);
         return Result.ok(schedule);
     }

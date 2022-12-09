@@ -25,6 +25,7 @@ public class UserController {
     public Result list(@PathVariable Long page,
                        @PathVariable Long limit,
                        UserInfoQueryVo userInfoQueryVo) {
+        //UserInfoQueryVo表示用户认证信息
         Page<UserInfo> pageParam = new Page<>(page,limit);
         IPage<UserInfo> pageModel =
                 userInfoService.selectPage(pageParam,userInfoQueryVo);
@@ -38,7 +39,7 @@ public class UserController {
         return Result.ok();
     }
 
-    //用户详情
+    //获取用户详情
     @GetMapping("show/{userId}")
     public Result show(@PathVariable Long userId) {
         Map<String,Object> map = userInfoService.show(userId);

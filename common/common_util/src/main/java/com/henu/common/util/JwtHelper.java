@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 public class JwtHelper {
     //过期时间
     private static long tokenExpiration = 24*60*60*1000;
+
     //签名秘钥
     private static String tokenSignKey = "123456";
 
@@ -19,7 +20,7 @@ public class JwtHelper {
                 .claim("userId", userId)//用户ID
                 .claim("userName", userName)//用户name
                 .signWith(SignatureAlgorithm.HS512, tokenSignKey)//加密方式和加密密码
-                .compressWith(CompressionCodecs.GZIP)
+                .compressWith(CompressionCodecs.GZIP)//数据压缩方式
                 .compact();
         return token;
     }
@@ -28,8 +29,10 @@ public class JwtHelper {
     //根据token字符串得到用户id
     public static Long getUserId(String token) {
         if(StringUtils.isEmpty(token)) return null;
+
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(tokenSignKey).parseClaimsJws(token);
         Claims claims = claimsJws.getBody();
+
         Integer userId = (Integer)claims.get("userId");
         return userId.longValue();
     }
@@ -40,11 +43,12 @@ public class JwtHelper {
 
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(tokenSignKey).parseClaimsJws(token);
         Claims claims = claimsJws.getBody();
+
         return (String)claims.get("userName");
     }
 
     public static void main(String[] args) {
-        String token = JwtHelper.createToken(1L, "lucy");
+        String token = JwtHelper.createToken(1L, "duan");
         System.out.println(token);
         System.out.println(JwtHelper.getUserId(token));
         System.out.println(JwtHelper.getUserName(token));

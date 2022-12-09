@@ -23,7 +23,7 @@ public class ConstantWxPropertiesUtils implements InitializingBean {
     public static String WX_OPEN_APP_ID;
     public static String WX_OPEN_APP_SECRET;
     public static String WX_OPEN_REDIRECT_URL;
-    public static String YYGH_BASE_URL;
+    public static String MEDICAL_BASE_URL;
 
 
     @Override
@@ -31,6 +31,6 @@ public class ConstantWxPropertiesUtils implements InitializingBean {
         WX_OPEN_APP_ID = appId;
         WX_OPEN_APP_SECRET = appSecret;
         WX_OPEN_REDIRECT_URL = redirectUrl;
-        YYGH_BASE_URL = medicalBaseUrl;
+        MEDICAL_BASE_URL = medicalBaseUrl;
     }
 }

@@ -34,12 +34,12 @@ public class MsmApiController {
             return Result.ok();
         }
         //如果从redis获取不到，
-        // 生成验证码，
+        // 生成验证码6位验证码
         code = RandomUtil.getSixBitRandom();
         //调用service方法，通过整合短信服务进行发送
         System.out.println(code);
         boolean isSend = msmService.send(phone,code);
-        //生成验证码放到redis里面，设置有效时间
+        //生成验证码放到redis里面，设置有效时间为2分钟
         if(isSend) {
             redisTemplate.opsForValue().set(phone,code,2, TimeUnit.MINUTES);
             return Result.ok();

@@ -40,7 +40,7 @@ public class PatientServiceImpl extends
 
     //Patient对象里面其他参数封装
     private Patient packPatient(Patient patient) {
-        //根据证件类型编码，获取证件类型具体指
+        //根据证件类型编码，获取证件类型具体值
         String certificatesTypeString =
                 dictFeignClient.getName(DictEnum.CERTIFICATES_TYPE.getDictCode(), patient.getCertificatesType());//联系人证件
         //联系人证件类型
