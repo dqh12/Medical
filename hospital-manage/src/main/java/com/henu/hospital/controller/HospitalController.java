@@ -8,6 +8,7 @@ import com.henu.hospital.util.Result;
 import com.henu.hospital.util.ResultCodeEnum;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 @Api(tags = "医院管理接口")
 @RestController
+@CrossOrigin
 public class HospitalController {
 
 	@Autowired

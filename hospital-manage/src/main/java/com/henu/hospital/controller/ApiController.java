@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @Api(tags = "医院管理接口")
 @Controller
 @RequestMapping
+@CrossOrigin
 public class ApiController extends com.henu.hospital.controller.BaseController {
 
 	@Autowired
