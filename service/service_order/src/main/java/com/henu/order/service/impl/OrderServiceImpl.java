@@ -295,6 +295,7 @@ public class OrderServiceImpl extends
     public Map<String, Object> getCountMap(OrderCountQueryVo orderCountQueryVo) {
         //调用mapper方法得到数据
         List<OrderCountVo> orderCountVoList = baseMapper.selectOrderCount(orderCountQueryVo);
+        System.out.println(orderCountVoList);
 
         //获取x需要数据 ，日期数据  list集合
         List<String> dateList = orderCountVoList.stream().map(OrderCountVo::getReserveDate).collect(Collectors.toList());

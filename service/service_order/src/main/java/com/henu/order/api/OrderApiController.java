@@ -67,6 +67,7 @@ public class OrderApiController {
     @ApiOperation(value = "获取订单统计数据")
     @PostMapping("inner/getCountMap")
     public Map<String, Object> getCountMap(@RequestBody OrderCountQueryVo orderCountQueryVo) {
+        System.out.println("****************************");
         return orderService.getCountMap(orderCountQueryVo);
     }
 }
