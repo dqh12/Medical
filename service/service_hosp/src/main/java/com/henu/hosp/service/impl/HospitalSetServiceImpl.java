@@ -22,6 +22,7 @@ public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, Hospi
         return hospitalSet.getSignKey();
     }
 
+    //获取医院签名信息
     @Override
     public SignInfoVo getSignInfoVo(String hoscode) {
         QueryWrapper<HospitalSet> wrapper = new QueryWrapper<>();

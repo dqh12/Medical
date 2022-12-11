@@ -26,6 +26,7 @@ public class HospitalServiceImpl implements HospitalService {
     @Autowired
     private DictFeignClient dictFeignClient;
 
+    // 保存医院的基本信息
     @Override
     public void save(Map<String, Object> paramMap) {
         //把参数map集合转换对象 Hospital
@@ -52,6 +53,7 @@ public class HospitalServiceImpl implements HospitalService {
         }
     }
 
+    //查询医院信息
     @Override
     public Hospital getByHoscode(String hoscode) {
         Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
@@ -98,6 +100,7 @@ public class HospitalServiceImpl implements HospitalService {
         hospitalRepository.save(hospital);
     }
 
+    //医院详情
     @Override
     public Map<String, Object> getHospById(String id) {
         Map<String, Object> result = new HashMap<>();

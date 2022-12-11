@@ -18,7 +18,7 @@ public class ScheduledTask {
      * 每天8点执行 提醒就诊
      * 在线生成cron地址：https://crom.qqe2.com
      */
-    @Scheduled(cron = "0/1 * * * * ?")//每隔三十分钟
+    @Scheduled(cron = "0/30 * * * * ?")//每隔三十分钟
 //    @Scheduled(cron = "0 0 8 * * ?")
     public void task1() {
         rabbitService.sendMessage(MqConst.EXCHANGE_DIRECT_TASK, MqConst.ROUTING_TASK_8, "");

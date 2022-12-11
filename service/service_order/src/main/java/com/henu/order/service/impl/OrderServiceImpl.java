@@ -309,6 +309,8 @@ public class OrderServiceImpl extends
         return map;
     }
 
+
+    // 将数据库中存储的订单状态 改为中文返回前端
     private OrderInfo packOrderInfo(OrderInfo orderInfo) {
         orderInfo.getParam().put("orderStatusString", OrderStatusEnum.getStatusNameByStatus(orderInfo.getOrderStatus()));
         return orderInfo;

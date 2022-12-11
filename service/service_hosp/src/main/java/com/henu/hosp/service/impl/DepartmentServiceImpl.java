@@ -45,6 +45,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
     }
 
+    //分页查询科室信息
     @Override
     public Page<Department> findPageDepartment(int page, int limit, DepartmentQueryVo departmentQueryVo) {
         // 创建Pageable对象，设置当前页和每页记录数
@@ -130,6 +131,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return null;
     }
 
+    // 根据医院编号 和 科室编号，查询科室对象
     @Override
     public Department getDepartment(String hoscode, String depcode) {
         return departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
